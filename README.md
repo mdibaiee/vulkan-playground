@@ -6,5 +6,5 @@ Install VulkanSDK: https://vulkan.lunarg.com/
 brew install glfw glm
 export VULKAN_SDK=$HOME/path/to/your/VulkanSDK/1.3.236.0
 
-make
+make run
 ```
