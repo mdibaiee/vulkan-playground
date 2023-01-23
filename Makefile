@@ -10,8 +10,14 @@ main: main.cpp
 	# link
 	clang++ -L${_BREW_PREFIX}/lib -lglfw.3.3 -L${VULKAN_SDK}/macOS/lib -lvulkan.1.3.236 -l vulkan.1  main.o -o main
 
+.PHONY: %.spv
+shaders/%.spv: shaders/shader.%
+	${VULKAN_SDK}/macOS/bin/glslc $? -o $@
+
+.PHONY: shaders
+shaders: shaders/vert.spv shaders/frag.spv
+
 .PHONY: run
-run: main
+run: shaders main
 	chmod +x ./main
 	./main
-
